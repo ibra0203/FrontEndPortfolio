@@ -48,6 +48,23 @@ jQuery(document).ready(function(){
         jQuery('.arlo_tm_preloader').addClass('loaded');
     }, 1000);
 	});
+	String.prototype.isAllSymbols = function()
+	{
+		let reg = /^[\W]*(?![a-z])$/;
+		return this.match(reg);
+	}
+	let skills = $('#skills').text().split(' ');
+	$('#skills').empty();
+	$.each(skills, function(i,str)
+	{
+		let nHtml = str;
+		if (str.isAllSymbols())
+		{
+			nHtml = "<span class='highlight'>" + str + "</span>";
+			
+		}
+		$('#skills').html($('#skills').html() + nHtml + ' ');
+	});
 	
 });
 
